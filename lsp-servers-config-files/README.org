@@ -1,0 +1,29 @@
+* Source
+I found out about these lsp server specific files here: https://github.com/emacs-lsp/lsp-docker?tab=readme-ov-file#registering-a-language-server-using-a-persistent-configuration-file
+
+* Registering a language server using a persistent configuration file:
+A configuration file is a yaml file that can be located at:
+
+#+BEGIN_SRC
+<PROJECT_ROOT>/.lsp-docker.yml
+<PROJECT_ROOT>/.lsp-docker.yaml
+<PROJECT_ROOT>/.lsp-docker/.lsp-docker.yml
+<PROJECT_ROOT>/.lsp-docker/.lsp-docker.yaml
+<PROJECT_ROOT>/.lsp-docker/lsp-docker.yml
+<PROJECT_ROOT>/.lsp-docker/lsp-docker.yaml
+<PROJECT_ROOT>/.lsp-docker/config.yml
+<PROJECT_ROOT>/.lsp-docker/config.yaml
+#+END_SRC
+
+
+* Registering a language server using a .dir-locals file:
+
+Just refer to the source code and general conventions of using .dir-locals. The variable you need is lsp-docker-persistent-default-config, its content is merged with the lsp section from a configuration file (if present).
+
+Automatic image building:
+You can also build an image automatically (currently supported only for image subtype): just drop the corresponding Dockerfile into the .lsp-docker folder in the project root (Dockerfile may be named as Dockerfile or Dockerfile.lsp). Building process is triggered by the lsp-docker-register call (you will be prompted whether you want to build the image). Image building takes place in the project root (not in the .lsp-docker subfolder)! In case of an automatic build the image will be registered automatically (based on the values from the config or .dir-locals file).
+
+You can also troubleshoot any issues with supplemental docker calls (checking whether the required image already exists, building a new image) using the supplemental logging functionality: there are 2 variables: first you have to set lsp-docker-log-docker-supplemental-calls to true-like value (by default it is nil) and then specify the log buffer in the lsp-docker-log-docker-supplemental-calls-buffer-name variable (by default it is set to *lsp-docker-supplemental-calls*)
+
+* Docker over TRAMP for TBD
+Docker running the language servers and hosting the sources, Emacs running on the desktop machine and connecting to docker instance over TRAMP.

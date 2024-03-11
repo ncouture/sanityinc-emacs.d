@@ -15,6 +15,7 @@
 (when (version< emacs-version "28.1")
   (message "Your Emacs is old, and some functionality in this config will be disabled. Please upgrade if possible."))
 
+(add-to-list 'load-path (expand-file-name "user-lisp" user-emacs-directory))
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 (require 'init-benchmarking) ;; Measure startup time
 

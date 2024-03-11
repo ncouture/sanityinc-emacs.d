@@ -4,8 +4,8 @@
 
 ;;; Code:
 
-(maybe-require-package 'flycheck)
-(maybe-require-package 'company-mode)
+;; (maybe-require-package 'flycheck)
+;; (maybe-require-package 'company-mode)
 (maybe-require-package 'lsp-ui)
 (maybe-require-package 'lsp-treemacs)
 (maybe-require-package 'helm-lsp)
@@ -14,7 +14,7 @@
 (global-flycheck-mode)
 (global-company-mode)
 (dap-mode)
-
+(treemacs)
 ;; if you want to change prefix for lsp-mode keybindings.
 (setq lsp-keymap-prefix "C-l")
 (define-key global-map (kbd "C-c C-s") 'lsp-keymap-prefix)
@@ -32,14 +32,28 @@
 ;; lsp-headerline-breadcrumb-enable-symbol-numbers
 (setq lsp-modeline-code-actions-segments '(count icon name))
 
-(setq lsp-clients-angular-language-server-command
-      '("node"
-        "/usr/lib/node_modules/@angular/language-server"
-        "--ngProbeLocations"
-        "/usr/lib/node_modules"
-        "--tsProbeLocations"
-        "/usr/lib/node_modules"
-        "--stdio"))
+(package-initialize)
+(setq lsp-enable-suggest-server-download nil)
+
+(unless package-archive-contents
+  (package-refresh-contents))
+
+(package-install-selected-packages)
+
+;; lsp configuration begin
+(with-eval-after-load 'lsp-mode
+  (require 'yasnippet))
+
+(add-hook 'prog-mode-hook 'lsp-deferred)
+
+(setq lsp-log-io t)
+(setq-default lsp-ui-sideline-show-hover t)
+(require 'lsp-go)
+(require 'lsp-html)
+;; lsp configuration end
+
+(yas-global-mode)
+(ido-mode)
 
 (provide 'init-lsp)
 ;;; init-lsp.el ends here
