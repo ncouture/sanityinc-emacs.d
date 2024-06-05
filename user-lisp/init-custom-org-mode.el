@@ -4,21 +4,21 @@
 ;;;
 ;;; Code:
 
-(global-org-modern-mode)
+;; (global-org-modern-mode)
 
 ;; Option 1: Per buffer
 (add-hook 'org-mode-hook #'org-modern-mode)
 (add-hook 'org-agenda-finalize-hook #'org-modern-agenda)
 
 ;; Option 2: Globally
-(with-eval-after-load 'org (global-org-modern-mode))
+;; (with-eval-after-load 'org (global-org-modern-mode))
 
 ;; Minimal UI
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
-(require-package 'modus-themes)
-(load-theme 'modus-operandi)
+;; (require-package 'modus-themes)
+;; (load-theme 'modus-operandi)
 
 ;; Choose some fonts
 ;; (set-face-attribute 'default nil :family "Iosevka")
@@ -58,10 +58,10 @@
  org-agenda-current-time-string
  "◀── now ─────────────────────────────────────────────────")
 
-;; Ellipsis styling
-(setq org-ellipsis "…")
-;;(set-face-underline 'org-ellipsis nil)
-(set-face-attribute 'org-ellipsis nil :inherit 'default :box nil)
+;; ;; Ellipsis styling
+;; (setq org-ellipsis "…")
+;; ;;(set-face-underline 'org-ellipsis nil)
+;; (set-face-attribute 'org-ellipsis nil :inherit 'default :box nil)
 
 (provide 'init-custom-org-mode)
 ;;; init-custom-org-mode.el ends here.

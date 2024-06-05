@@ -5,7 +5,7 @@
 ;;; Code:
 
 (if (not (package-installed-p 'robby))
-    (package-vc-install "https://github.com/stevemolitor/robby"))
+    (package-vc-install "https://github.com/stevemolitor/robby.git"))
 
 (setq robby-openai-api-key "sk-ai-assistant-robbie-for-emacs-xBF4NE7RhLC0Rh1sS0XaT3BlbkFJ5n3IQtsGYYLEEYtBy0hg")
 

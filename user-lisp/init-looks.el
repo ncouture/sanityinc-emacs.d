@@ -10,7 +10,7 @@
 (catppuccin-reload)
 
 (set-face-attribute 'default nil
-                    :font "PragmataPro Mono-18:antialias=true:hinting=true:autohint=true")
+                    :font "PragmataPro Mono Liga-22:antialias=true:hinting=true:autohint=true")
 
 (provide 'init-looks)
 ;;; init-looks ends here
