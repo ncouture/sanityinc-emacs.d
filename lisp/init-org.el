@@ -1,4 +1,4 @@
-;;; init-org.el --- Org-mode config -*- lexical-binding: t -*-
+;; init-org.el --- Org-mode config -*- lexical-binding: t -*-
 ;;; Commentary:
 
 ;; Among settings for many aspects of `org-mode', this code includes
@@ -22,6 +22,7 @@
 
 ;;; Code:
 
+(setq org-default-notes-file (expand-file-name "~/org" "inbox.org"))
 (when *is-a-mac*
   (maybe-require-package 'grab-mac-link))
 

@@ -4,17 +4,12 @@
 
 ;;; Code:
 
-;; (maybe-require-package 'flycheck)
-;; (maybe-require-package 'company-mode)
 (maybe-require-package 'lsp-ui)
 (maybe-require-package 'lsp-treemacs)
 (maybe-require-package 'helm-lsp)
 (maybe-require-package 'lsp-ivy)
 (maybe-require-package 'dap-mode)
-(global-flycheck-mode)
-(global-company-mode)
-(dap-mode)
-(treemacs)
+
 ;; if you want to change prefix for lsp-mode keybindings.
 (setq lsp-keymap-prefix "C-l")
 (define-key global-map (kbd "C-c C-s") 'lsp-keymap-prefix)
@@ -32,7 +27,7 @@
 ;; lsp-headerline-breadcrumb-enable-symbol-numbers
 (setq lsp-modeline-code-actions-segments '(count icon name))
 
-(package-initialize)
+;;(package-initialize)
 (setq lsp-enable-suggest-server-download nil)
 
 (unless package-archive-contents
@@ -51,9 +46,6 @@
 (require 'lsp-go)
 (require 'lsp-html)
 ;; lsp configuration end
-
-(yas-global-mode)
-(ido-mode)
 
 (provide 'init-lsp)
 ;;; init-lsp.el ends here

@@ -55,6 +55,7 @@ This is useful when followed by an immediate kill."
 
 (define-key isearch-mode-map [(control return)] 'sanityinc/isearch-exit-other-end)
 
+(global-anzu-mode +1)
 
 (provide 'init-isearch)
 ;;; init-isearch.el ends here
